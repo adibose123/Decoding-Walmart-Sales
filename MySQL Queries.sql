@@ -1,10 +1,7 @@
--- Walmart Project Queries - MySQL
+
+--MYSQL Queries
 
 SELECT * FROM walmart;
-
--- DROP TABLE walmart;
-
--- DROP TABLE walmart;
 
 -- Count total records
 SELECT COUNT(*) FROM walmart;
@@ -22,7 +19,7 @@ SELECT COUNT(DISTINCT branch) FROM walmart;
 -- Find the minimum quantity sold
 SELECT MIN(quantity) FROM walmart;
 
--- Business Problem Q1: Find different payment methods, number of transactions, and quantity sold by payment method
+-- Q1: Find different payment methods, number of transactions, and quantity sold by payment method
 SELECT 
     payment_method,
     COUNT(*) AS no_payments,
@@ -30,7 +27,7 @@ SELECT
 FROM walmart
 GROUP BY payment_method;
 
--- Project Question #2: Identify the highest-rated category in each branch
+-- Question #2: Identify the highest-rated category in each branch
 -- Display the branch, category, and avg rating
 SELECT branch, category, avg_rating
 FROM (
