@@ -1,93 +1,74 @@
-# Walmart Retail Intelligence: End-to-End SQL & Python Analytics Project
+# Walmart Sales Data Analysis
 
-## Project Summary
-This project delivers a comprehensive data engineering and analytics solution designed to extract actionable business insights from massive Walmart sales datasets. By architecting a pipeline that spans from automated data ingestion via the Kaggle API to advanced querying in MySQL and PostgreSQL, this project demonstrates the ability to transform raw, unstructured data into a strategic business asset.
+## Project Overview
 
----
-
-## Technical Ecosystem
-
-**Languages:**  
-Python 3.8+ (Data Engineering), SQL (Business Logic)
-
-**Data Tools:**  
-Pandas, NumPy (Data Manipulation)
-
-**Database Systems:**  
-MySQL, PostgreSQL
-
-**Infrastructure:**  
-SQLAlchemy (ORM), Kaggle API (Data Sourcing)
-
-**Development Environment:**  
-Visual Studio Code
+This project performs end-to-end data analysis on Walmart sales transaction data, covering data cleaning, exploratory analysis, and business insight extraction using Python and MySQL.
 
 ---
 
-## The Analytical Pipeline
+## Project Files
 
-### 1. Automated Ingestion & Environment Setup
-**Workspace Configuration:**  
-Established a structured directory for data, SQL scripts, and Python notebooks.
-
-**Kaggle API Integration:**  
-Automated the retrieval of the Walmart 10k Sales Dataset directly into the project environment, ensuring a reproducible data sourcing process.
-
----
-
-### 2. Sophisticated Data Cleaning & Transformation
-Before analysis, the raw data underwent a rigorous cleaning process to ensure integrity:
-
-**Integrity Checks:**  
-Identified and removed duplicate records and handled missing values to prevent skewed reporting.
-
-**Type Standardization:**  
-Validated and cast data types, specifically ensuring currency values and dates were formatted for computational accuracy.
-
-**Feature Engineering:**  
-Created a Total Amount field (unit_price × quantity) within the pipeline to streamline high-level SQL aggregations.
+| File | Description |
+|------|-------------|
+| `Walmart.csv` | Raw, uncleaned sales transaction dataset |
+| `walmart_clean_data.csv` | Cleaned and processed dataset ready for analysis |
+| `data_cleaning.ipynb` | Jupyter notebook for data cleaning and preprocessing |
+| `MySQL_Queries.sql` | SQL queries for business insight extraction |
 
 ---
 
-### 3. Database Architecture & Loading
-**Automated Schema Mapping:**  
-Leveraged SQLAlchemy to automate table creation and data insertion across both MySQL and PostgreSQL environments.
+## Dataset Description
 
-**Multi-Database Support:**  
-Ensured the pipeline is compatible with various relational database management systems (RDBMS).
+The cleaned dataset contains the following columns:
 
----
+| Column | Description |
+|--------|-------------|
+| `invoice_id` | Unique transaction identifier |
+| `branch` | Walmart branch code (e.g., WALM003) |
+| `city` | City where the branch is located |
+| `category` | Product category (e.g., Health and beauty, Electronics) |
+| `unit_price` | Price per unit of product |
+| `quantity` | Number of units sold |
+| `date` | Transaction date (DD/MM/YY) |
+| `time` | Transaction time (HH:MM:SS) |
+| `payment_method` | Payment type (Cash, Ewallet, Credit card) |
+| `rating` | Customer satisfaction rating |
+| `profit_margin` | Profit margin for the transaction |
 
-### 4. Advanced SQL Business Logic
-The core of the project involves executing complex queries to address critical retail KPIs, including:
-
-**Revenue Optimization:**  
-Analyzing trends across different branches and product categories.
-
-**Operational Efficiency:**  
-Identifying peak shopping hours and preferred payment methods to optimize staffing and checkout flows.
-
-**Profitability Analysis:**  
-Determining the highest-margin categories and locations to inform inventory and marketing strategies.
-
----
-
-## Key Business Questions Addressed
-
-| Objective | Analysis Focus |
-|--------|----------------|
-| Sales Performance | Which branches outperform others in total revenue? |
-| Product Strategy | What are the best-selling categories by volume and value? |
-| Consumer Insights | What are the peak sales periods and most common payment methods? |
-| Profitability | Which specific product lines yield the highest profit margins? |
+Dataset size: ~9,970 transaction records
 
 ---
 
-## Project Structure
+## Data Cleaning
 
-```plaintext
-|-- data/                 # Raw and processed datasets
-|-- sql_queries/          # Advanced SQL scripts for business logic
-|-- notebooks/            # Python EDA and ETL scripts
-|-- main.py               # Central execution script for cleaning & loading
-|-- requirements.txt      # Project dependencies
+The Jupyter notebook handles the following preprocessing steps:
+
+- Removing duplicate records
+- Handling missing and null values
+- Standardizing date and time formats
+- Fixing data types (e.g., converting `unit_price` from string to float)
+- Deriving calculated columns as needed
+
+---
+
+## Tools and Technologies
+
+- Python - Data cleaning and preprocessing
+- Pandas - DataFrame operations
+- Jupyter Notebook - Interactive analysis environment
+- MySQL - Business insight queries using window functions, CTEs, and aggregations
+
+---
+
+## Key Insights
+
+- Payment Methods: Ewallet, Cash, and Credit Card are the three payment options analyzed across all branches.
+- Shift Analysis: Transactions are categorized into Morning (before 12:00), Afternoon (12:00 to 17:00), and Evening (after 17:00).
+- Profitability: Total profit is calculated as unit_price x quantity x profit_margin.
+- Revenue Trends: Year-over-year revenue change is tracked from 2022 to 2023 across branches.
+
+---
+
+## License
+
+This project is for educational and portfolio purposes.
